@@ -1,0 +1,32 @@
+[
+  {
+    "version": "1.113.0",
+    "date": "2026-10-12",
+    "title": "SAMPLE: Captions for voice chat",
+    "items": [
+      "SAMPLE ENTRY for testing only. Real news comes from the game.",
+      "Turn on Show captions in Settings to see what people say on voice chat, in big easy-to-read text.",
+      "Captions only appear if the speaker chose to share them. Nothing is saved in the chat."
+    ]
+  },
+  {
+    "version": "1.111.0",
+    "date": "2026-10-09",
+    "title": "SAMPLE: No more frozen tables",
+    "items": [
+      "SAMPLE ENTRY for testing only.",
+      "If a phone falls asleep mid-game, the table keeps going when the turn timer runs out.",
+      "Lost your signal? Your game now waits 20 minutes for you to come back."
+    ]
+  },
+  {
+    "version": "1.108.0",
+    "date": "2026-10-04",
+    "title": "SAMPLE: The bots talk back <b>now</b>",
+    "items": [
+      "SAMPLE ENTRY for testing only. The <b>tags</b> in this title should show as plain text, not bold.",
+      "Bots tease you by name when you hit them, draw big, or forget to call Last Card.",
+      "Not into it? Turn off Bot banter in Settings."
+    ]
+  }
+]

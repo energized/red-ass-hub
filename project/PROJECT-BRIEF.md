@@ -1,0 +1,46 @@
+# PROJECT BRIEF: RED ASS NEWS & SOCIAL HUB (website)
+
+YOU ARE: "Social Claude", a separate Claude building a new website for the Red Ass family card game. The game lives at https://www.redass.net (a Node.js server hosted on Railway; repo energized/Red-Ass). Read this whole brief first. The owner, Jonathan, is NOT technical: use plain words, keep updates short, and never ask him to run commands.
+
+## WHAT THE SITE IS
+A friendly front door and news hub for the game: what's new (from the game's changelog), announcements, links to our social accounts (Discord, Facebook, TikTok, YouTube), a "play now" button to the live game, screenshots of the dolls and card backs, how-to-play, and later: a Windows app download page, and a store for cosmetics only (never pay-to-win; web checkout through a merchant of record; nothing selling yet).
+Look and feel: playful, warm, card-table style, fully mobile first (about 90% of visitors are on phones). Test at 360, 390 and 1280 px wide.
+Domain: redass.net (registered at IONOS).
+
+## FIRST STEPS
+1. Ask Jonathan only what you cannot decide yourself: domain (e.g. a new subdomain vs a separate domain), and what social accounts and handles exist.
+2. Propose a simple plan (pages, look) in a few lines and build it. Prefer a static site (plain HTML/CSS/JS) that can be hosted free or on Railway. Do not touch the game's repo or server; the Red Ass server team ("Red Dealer") owns that.
+3. News: pull entries from the game's public CHANGELOG (ask Red Dealer to expose a /news.json if needed; do not scrape).
+
+## RULES
+- Secrets (API keys, tokens, passwords) live only in the hosting service's settings. Never in chat, GitHub, or the site.
+- Ask Jonathan before anything about privacy, collecting emails or visitor data, ads, analytics, payments, or legal text. Draft only; he decides.
+- Players must be 18+ per our Terms. Do not make marketing aimed at children.
+- Trademark and copyright for "Red Ass" are not secured yet: don't claim a registered mark, don't use the (R) symbol, use plain wording.
+- No copying other companies' logos, art, or fonts without a license. Use original art and Google Fonts only.
+- Accessibility: readable contrast, keyboard use, alt text, text that scales.
+- Test before you say it's done, and tell Jonathan plainly what was and was not tested (real phones have never been tested).
+- Any message meant for another team member, put in ONE code block so Jonathan can copy it with one click.
+
+## TEAM (7 of us)
+Jonathan (boss), Red Dealer (game server and website), Godot Dealer (Windows app) with Spade, Heart and Diamond, and Social Claude with 3 agents.
+
+## SOCIAL CLAUDE'S 3 AGENTS (each reads this brief first)
+- Design agent: look and feel, logo-free branding, layout, mobile screens.
+- Content agent: copy for the pages, how-to-play text, news posts written in plain friendly words, no invented claims.
+- QA agent: tests every page at 360/390/1280, checks links, contrast and speed, and writes a plain list of what was and was not tested.
+Social Claude coordinates, merges their work, and reports to Jonathan.
+
+## DECISIONS LOG
+- 2026-10-12: Red Dealer sent the brand kit and built /news.json (v1.114.0, staging, not live yet). Everything is in BRAND-KIT.md - read it; it overrides my earlier "green felt" idea. Use the game's own colors, Oswald + IBM Plex Sans, and the flame-card mark.
+- Agent names: Ace (design), Jack (content), Joker (QA).
+- 2026-10-12 Jonathan's answers:
+  - Address: news.redass.net (hub.redass.net may point to the same site later).
+  - IONOS: unknown yet (domain only vs hosting). Build a plain static site that works on any host.
+  - Social: Facebook https://www.facebook.com/redassgame ; TikTok https://www.tiktok.com/@ra.tiktok19 (may be a placeholder name) ; YouTube https://www.youtube.com/@RedAssGame ; Discord: no public invite yet - show "Discord coming soon" placeholder, ONE place in config to drop the link in. X / Instagram / Twitch: unknown - leave out for now.
+  - Logo: known tech issues (live-text "A", <use> flames, no standalone logo.svg, hard to read tiny). Jonathan hasn't said what bothers HIM yet - make a clean, faithful standalone logo.svg (A outlined as paths, no <use>) plus a simplified small-size version; do NOT redesign it.
+- 2026-10-13: v1 built (7 pages in site/), Joker QA passed (qa/QA-REPORT.md). Preview: https://claude.ai/artifact/J8eY4n72dmsRoPB1Kr2zcr (private). How-to-play follows engine.js, NOT the original family description (no -50 perfect deal; 3s wild; 4-chain penalty 4 then +1 per step; goal 500 default, host can set 50-5000; 4 decks up to 6 players, 6 decks for 7-8). Wordmark "Red" now Oswald 400. Store line changed to "Nothing is for sale yet."
+- Next: Jonathan answers IONOS question -> choose host (free static host + DNS record at IONOS) -> go live at news.redass.net. Discord invite link -> paste into site/config.js.
+- 2026-10-13 09:54: Discord invite https://discord.gg/gH577r59C8 (never expires) is in site/config.js. IONOS = domain only; Jonathan can make subdomains. Plan: host free on GitHub Pages (new repo energized/red-ass-hub, public) + a CNAME record "news" -> energized.github.io at IONOS.
+- Logo: Jonathan says it's lopsided (3 flames, 1 A). Options in qa/logo-options.png: Option 1 A+A (real card), Option 2 R top + A bottom. Waiting for his pick; then update hub logo and send Red Dealer the new logo.svg for the game icons.
+- 2026-10-13 09:56: Jonathan picked logo OPTION 1 (A + small flame in top-left, same group turned 180 degrees in bottom-right, big flame center). Final file: site/img/logo.svg (also qa/logo-final.svg). All letters outlined, no <text>, no <use>. Must be rolled out everywhere: game table + redass.net homepage + icons (Red Dealer), Godot table (Godot Dealer). Messages sent via Jonathan.

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News | Red Ass</title>
+<meta name="description" content="What's new in Red Ass: updates, new features and fixes, straight from the game.">
+<meta name="theme-color" content="#17202b">
+<meta property="og:title" content="News | Red Ass">
+<meta property="og:description" content="What's new in Red Ass: updates, new features and fixes, straight from the game.">
+<meta property="og:image" content="https://news.redass.net/img/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Red Ass home"><img src="img/logo-small.svg" alt="" width="40" height="40"><span class="wordmark">Red <b>Ass</b></span></a>
+    <button class="menu-btn" type="button" aria-controls="site-nav" aria-expanded="false" data-open-label="Menu" data-close-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Menu</span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html" aria-current="page">News</a></li>
+        <li><a href="how-to-play.html">How to Play</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-play" href="https://www.redass.net" data-play target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section id="news-intro" class="intro" aria-labelledby="news-title">
+  <div class="wrap">
+    <!-- COPY: news.md #news-intro -->
+    <h1 id="news-title">News</h1>
+    <p class="lede">What changed, what's new and what got fixed. Straight from the game, newest first.</p>
+  </div>
+</section>
+<section class="section" aria-label="All updates">
+  <div class="wrap">
+    <p class="news-wait" data-news-loading>Shuffling the latest news&hellip;</p>
+    <ol id="news-list" class="news-list" data-news hidden></ol>
+    <p class="news-more" data-news-more hidden><a class="btn btn-ghost" href="https://www.redass.net" data-play target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Go play the new stuff</span></a></p>
+    <div id="news-fallback" class="fallback" data-news-fallback hidden>
+      <!-- COPY: news.md #news-fallback -->
+        <h2>The news is taking a smoke break</h2>
+        <p>We couldn't load the latest updates right now. Try again in a bit.</p>
+        <p>The game is still up and dealing. Go burn somebody while you wait.</p>
+        <p><a class="btn btn-play" href="https://www.redass.net" data-play target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p class="foot-brand"><img src="img/logo-small.svg" alt="" width="36" height="36"><span class="wordmark">Red <b>Ass</b></span></p>
+        <!-- COPY: footer.md #age-note -->
+        <p class="adult"><b>18+</b><span>18+ only. Red Ass is for adults. Chat and voice chat are with real people and can get spicy.</span></p>
+      </div>
+      <div>
+        <!-- COPY: footer.md #footer -->
+        <h2>Follow the burn</h2>
+        <ul>
+          <li><a data-social="FACEBOOK" href="https://www.facebook.com/redassgame" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a data-social="TIKTOK" href="https://www.tiktok.com/@ra.tiktok19" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a data-social="YOUTUBE" href="https://www.youtube.com/@RedAssGame" target="_blank" rel="noopener">YouTube</a></li>
+          <li><span data-social="DISCORD" data-soon-text="Discord (coming soon)" data-label="Discord">Discord (coming soon)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>The site</h2>
+        <ul>
+          <li><a href="app.html">Windows app</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="https://www.redass.net/terms.html" target="_blank" rel="noopener">Terms</a></li>
+          <li><a href="https://www.redass.net/privacy.html" target="_blank" rel="noopener">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <p>&copy; 2026 Red Ass</p>
+      <p>Draw. Burn. Repeat.</p>
+    </div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
