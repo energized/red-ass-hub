@@ -153,31 +153,57 @@
     $$('[data-news-fallback]').forEach(function (n) { n.hidden = false; });
   }
 
-  /* ---------- gallery ---------- */
+  /* ---------- card backs: live list from the game, saved copies as backup ---------- */
+  var CFG = window.RA_CONFIG || {};
+  var LOCAL = 'astronaut aurora autumn burger canyon coffee comet croissant cupcake dunes earth friedchicken fries galaxy glacier hotdog icecream icecrystal junglefalls lighthouse moon mtnfalls oceancliff pancakes pines pizza pretzel ramen redplanet ringplanet rocket snowpeaks stepfalls sun sunsetbeach sushi taco telescope volcano watermelon'.split(' ');
+  var CACHE_KEY = 'ra_backs_v1';
+  var okId = function (id) { return typeof id === 'string' && /^[a-z0-9]{2,24}$/.test(id); };
+  var cleanList = function (d) {
+    var arr = Array.isArray(d) ? d : (d && Array.isArray(d.backs) ? d.backs : []);
+    return arr.filter(function (b) { return b && okId(b.id) && typeof b.name === 'string' && b.name.length < 60; })
+              .map(function (b) { return { id: b.id, name: b.name }; });
+  };
+  function loadLiveBacks() {
+    if (!CFG.BACKS_URL || !window.fetch) return Promise.reject(0);
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 5000);
+    return fetch(CFG.BACKS_URL, { credentials: 'omit', signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { clearTimeout(timer); if (!r.ok) throw 0; return r.json(); })
+      .then(function (d) {
+        var list = cleanList(d);
+        if (list.length < 5) throw 0;
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ids: list.map(function (b) { return b.id; }), base: CFG.BACKS_IMG, at: Date.now() })); } catch (e) {}
+        return list;
+      });
+  }
   var grid = document.querySelector('[data-backs]');
   if (grid) {
-    // used only if data/backs.json is missing: the 40 backs in img/backs/
-    var FILES = 'astronaut aurora autumn burger canyon coffee comet croissant cupcake dunes earth friedchicken fries galaxy glacier hotdog icecream icecrystal junglefalls lighthouse moon mtnfalls oceancliff pancakes pines pizza pretzel ramen redplanet ringplanet rocket snowpeaks stepfalls sun sunsetbeach sushi taco telescope volcano watermelon'.split(' ');
-    var fromFiles = function () {
-      return FILES.map(function (id) { return { id: id, name: id.charAt(0).toUpperCase() + id.slice(1) }; });
+    var fromLocal = function () {
+      return fetch('data/backs.json', { credentials: 'omit' })
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) { var l = cleanList(d); if (!l.length) throw 0; return l; })
+        .catch(function () { return LOCAL.map(function (id) { return { id: id, name: id.charAt(0).toUpperCase() + id.slice(1) }; }); });
     };
-    fetch('data/backs.json', { credentials: 'omit' })
-      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (d) {
-        var list = Array.isArray(d) ? d.filter(function (b) { return b && /^[a-z0-9_-]+$/i.test(b.id) && typeof b.name === 'string'; }) : [];
-        buildGrid(list.length ? list : fromFiles());
-      })
-      .catch(function () { buildGrid(fromFiles()); });
+    loadLiveBacks()
+      .then(function (list) { buildGrid(list, true); })
+      .catch(function () { fromLocal().then(function (l) { buildGrid(l, false); }); });
+  } else if (document.querySelector('#hero .fan')) {
+    // home page: refresh the saved list quietly so the next visit can deal brand-new backs
+    loadLiveBacks().catch(function () {});
   }
 
-  function buildGrid(backs) {
+  function buildGrid(backs, live) {
     var frag = document.createDocumentFragment();
     backs.forEach(function (b, i) {
       var li = el('li');
       var fig = el('figure');
       var frame = el('div', 'frame');
       var img = new Image(260, 364);
-      img.src = 'img/backs/' + b.id + '.webp';
+      img.src = (live ? CFG.BACKS_IMG : 'img/backs/') + b.id + '.webp';
+      if (live) img.onerror = function () {
+        img.onerror = null;
+        if (LOCAL.indexOf(b.id) >= 0) img.src = 'img/backs/' + b.id + '.webp'; else li.remove();
+      };
       img.alt = b.name + ' card back';
       img.decoding = 'async';
       if (i > 3) img.loading = 'lazy';
