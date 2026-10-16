@@ -131,6 +131,7 @@ p{margin:0 0 1em;max-width:62ch}
 .fan .c:nth-child(4){--rot:16deg;--y:2px;--d:.26s}
 .fan .c:nth-child(5){--rot:32deg;--y:14px;--d:.33s}
 .fan .c.ace{--rot:0deg;--y:-8px;--d:.19s;z-index:2;background:none;overflow:visible;box-shadow:none;filter:drop-shadow(0 18px 18px rgba(0,0,0,.6))}
+.fan .c.star{--rot:0deg;--y:-10px;--d:.19s;z-index:2;box-shadow:0 0 0 3px var(--gold),0 22px 36px -10px rgba(0,0,0,.8)}
 /* logo.svg already draws its own tilted card: size it so its card matches the others */
 .fan .c.ace img{width:133.3%;height:auto;max-width:none;margin:-14% 0 0 -16.6%}
 @keyframes deal{from{transform:rotate(0deg) translateY(80px);opacity:0}to{transform:rotate(var(--rot)) translateY(var(--y,0));opacity:1}}
