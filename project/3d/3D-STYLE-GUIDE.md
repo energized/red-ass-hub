@@ -4,7 +4,7 @@ _Owner: Social Claude (brand). Version 1, 2026-10-16. Follows Jonathan's decisio
 _Applies to: the 3D character, every cosmetic item, item icons and 2D portraits. Readers: ComfyUI (art), Browser and Godot (viewers), Backend (catalog names)._
 
 **Decided by Jonathan:** human avatars, glossy vinyl toy style, a free CC0 base for the P0 proof, items earned through chests, events, server firsts and sets, earned in-game currency (no real money until a lawyer has reviewed it), P0 proof now and the full system after votes and accolades.
-**Not decided (proposals here, need Jonathan's OK):** rarity tier names and colours, set names. They're marked _proposal_ below.
+**Approved for now (Jonathan, 2026-10-16 19:43; may change):** rarity tiers and colours (section 7) and the seven set names (section 9).
 
 ---
 
@@ -83,7 +83,7 @@ One shared material recipe for everything (glTF PBR, works in three.js and Godot
 
 **Portraits (2D at the table):** 512 x 512, head and shoulders, the same 3/4 angle, Table blue background with the glow (also export a transparent version). Rendered from the 3D model, never drawn separately, so it always matches.
 
-## 7. Rarity (_proposal: Jonathan to OK_)
+## 7. Rarity (approved for now, may change)
 
 See `rarity-frames.png` next to this file.
 
@@ -106,7 +106,7 @@ See `rarity-frames.png` next to this file.
 - **Never:** slot-machine reels, spinning wheels, "odds" countdowns, flashing JACKPOT, near-miss teases, fake scarcity timers.
 - New items get a small "New" tag until seen.
 
-## 9. Sets (_proposal: names to Jonathan_)
+## 9. Sets (names approved for now, may change)
 
 A set is 3 to 6 items that share a theme and colourway. Naming rules: 1 to 3 plain words, a card-table or burn twist, no real brands or people.
 Starter list: **High Roller**, **Last Card**, **Dealer's Choice**, **Burn Unit**, **Firehouse** (a nod to where the game came from), **Wild Three**, **Reverse King**.
