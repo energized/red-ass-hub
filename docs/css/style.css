@@ -301,3 +301,17 @@ a.social-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   a.social-card:hover,.btn-play:hover{transform:none}
 }
 .muted-tip{color:var(--felt-muted);font-size:.95rem}
+
+/* ---------- play anywhere ---------- */
+.anywhere-grid{display:grid;gap:18px;align-items:center}
+.anywhere-devices{width:100%;height:auto;display:block}
+.anywhere-qr{display:none;align-items:center;gap:16px;margin-top:20px}
+.anywhere-qr img{background:#fff;padding:9px;border-radius:14px;width:112px;height:112px}
+.anywhere-qr span{color:var(--felt-muted);font-size:.95rem;line-height:1.45}
+.anywhere-qr b{display:block;color:var(--felt-fg);font:600 1.15rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.05em}
+.anywhere-btn{margin-top:18px}
+@media (min-width:860px){
+  .anywhere-grid{grid-template-columns:.8fr 1.2fr;gap:40px}
+  .anywhere-qr{display:flex}
+  .anywhere-btn{display:none}   /* on a computer the QR does the job; on phones the button does */
+}
