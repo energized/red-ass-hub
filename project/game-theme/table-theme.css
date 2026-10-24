@@ -1,0 +1,34 @@
+/* === Red Ass "Table" theme: the news.redass.net colours, for every device and OS setting === */
+:root,:root[data-theme="dark"],:root[data-theme="light"]{
+  --bg:#17202b;            /* table blue */
+  --surface:#fbf8f3;       /* card cream: panels/cards */
+  --surface2:#f1ebe0;      /* cream, one step darker: inputs, chips, disabled */
+  --line:#e3dccf;          /* hairlines on cream */
+  --fg:#1a1f2b;            /* ink: text on cream */
+  --muted:#4f5868;         /* small text on cream */
+  --accent:#c4211b; --accent-ink:#ffffff;   /* burn red, white text */
+  --gold:#e8ab35; --good:#1d7a4a; --bad:#c4211b;
+  --felt:#17202b; --felt2:#1e2a38; --felt-fg:#e9edf3; --felt-muted:#a3afc0; --felt-line:#2c3b4d;
+  --card:#fbf8f3; --ink:#1a1f2b; --suit-red:#c4211b;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#17202b; --surface:#fbf8f3; --surface2:#f1ebe0; --line:#e3dccf; --fg:#1a1f2b; --muted:#4f5868;
+  --accent:#c4211b; --accent-ink:#ffffff; --good:#1d7a4a; --bad:#c4211b; --felt:#17202b; --felt2:#1e2a38; } }
+/* the page itself: lamp-lit table, light text */
+body{background-color:#17202b;color:#e9edf3;
+  background-image:radial-gradient(120% 70% at 50% 0%,#22324a 0%,rgba(30,42,56,.55) 40%,rgba(23,32,43,0) 75%),
+  repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 2px,rgba(0,0,0,0) 2px 5px)}
+/* panels read like cards on the table */
+.panel{color:#1a1f2b;border:0;border-radius:14px;box-shadow:0 0 0 3px #fbf8f3,0 18px 34px -14px rgba(0,0,0,.7)}
+/* primary button: burn red, chunky, lifted */
+.btn{border-radius:10px;box-shadow:0 2px 0 #a01a15,0 10px 20px -10px rgba(196,33,27,.8)}
+.btn:hover{background:#a01a15}
+/* header buttons on the felt: outlined in felt line, light text */
+.top .ghost,.top button,.top summary{background:rgba(30,42,56,.85);color:#e9edf3;border:1px solid #2c3b4d;border-radius:10px}
+/* links and focus */
+a{color:#b4211b} header a,footer a{color:#e8ab35}
+:focus-visible{outline:3px solid #e8ab35;outline-offset:3px}
+/* text that sits directly on the felt stays light */
+.top .lgtext h1{color:#e9edf3} .top .lgtext h1 b{color:#ff5a4f}
+.vertag{color:#a3afc0}
