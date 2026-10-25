@@ -55,7 +55,7 @@ One shared material recipe for everything (glTF PBR, works in three.js and Godot
 
 ## 4. Colour on items
 
-- Each item has **up to 3 colours**, like today (`c:[main, accent, detail]`). **Colourways** are material variants of the same mesh.
+- Each item has **up to 3 colours**, like today (`c:[main, accent, detail]`). Each mesh has **3 colour slots** (materials named `c1` main, `c2` accent, `c3` detail) that the web and Godot viewers tint at runtime from the catalog. A **colourway** is just a different set of 3 colours in the catalog, not a separate mesh or material variant.
 - Colours are free to be any colour, but must be **saturated and clean**: no muddy browns-greys unless it's the point of the item.
 - The **stage, UI and frames** always use the brand colours (section 6). The item never has to match the brand; the frame does.
 - Don't make items that copy the brand mark: **no ace-with-flame logo, no "RED ASS" wordmark on items** unless Jonathan asks. The logo stays out of the item system.
@@ -113,7 +113,7 @@ Starter list: **High Roller**, **Last Card**, **Dealer's Choice**, **Burn Unit**
 
 ## 10. File and naming conventions
 
-- One `.glb` per item: `<slot>_<name>.glb`, lowercase with hyphens, e.g. `hat_dealer-visor.glb`. Colourways live as material variants inside the file (`KHR_materials_variants`), named `<name>_<colourway>`, e.g. `dealer-visor_red`.
+- One `.glb` per item: `<slot>_<name>.glb`, lowercase with hyphens, e.g. `hat_dealer-visor.glb`. Materials that take a colour are named `c1`, `c2`, `c3`; colourways live in the catalog as colour lists (e.g. `dealer-visor` red = `["#c4211b","#fbf8f3","#1a1f2b"]`). Don't use `KHR_materials_variants`: Godot can't read it (ComfyUI, 2026-10-17).
 - Ids in the catalog match today's style (`top-tee-basic`) so existing ownership carries over.
 - Icons: `icons/<id>__<colourway>.png`; portraits are rendered on demand, not stored per player.
 - Phone budget (from the proposal): base body ≤ 8k triangles, each item ≤ 2k, a full outfit about 1.5 MB or less, 60 fps on a mid-range phone.
