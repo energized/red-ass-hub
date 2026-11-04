@@ -8,7 +8,7 @@ description: Red Ass brand rules: voice, logo, colours, fonts, themes, art and s
 Use this for anything players or the public will see: game UI, copy, art, web pages, posts, emails, store text. DECISIONS.md in the team mailbox wins if it ever disagrees with this skill; tell Social about the mismatch. To suggest an addition, leave Social a note in inbox/social/ with a subject starting "brand skill:". Do not edit this skill.
 
 ## 1. What Red Ass is
-- A family-style card game for adults (18+), played in the browser at https://www.redass.net. Approved line: "Red Ass is a family-style card game for adults (18+). You must be 18 or older to play."
+- A family-style card game for adults (18+), played in the browser at https://play.redass.net. Approved line: "Red Ass is a family-style card game for adults (18+). You must be 18 or older to play."
 - Tagline: **Draw. Burn. Repeat.**
 - News and social hub: https://news.redass.net (repo energized/red-ass-hub).
 
@@ -21,7 +21,7 @@ Use this for anything players or the public will see: game UI, copy, art, web pa
 6. **No secrets or players' personal data** in chat, GitHub or wiki.
 7. **Social posting is on hold** until Jonathan gives the live date and a go. Do not post or schedule anything.
 8. No other companies' logos, characters or fonts; no real people; no real flags or hate symbols as items. Use original art and Google Fonts only.
-9. Ask Jonathan before anything about privacy, collecting data, ads, analytics, payments or legal text. Draft only; he decides.
+9. Ask energizedGG before anything about privacy, collecting data, ads, analytics, payments or legal text. Draft only; he decides.
 
 ## 3. Voice
 Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never mean, never crude, never about real people. Short plain sentences. No invented claims.
@@ -62,7 +62,7 @@ Oswald (headings, uppercase, 500/600) and IBM Plex Sans (body 400/500/600), IBM 
 - Page wording must say: optional, cosmetic only, never pay-to-win, 18+, and that Lemon Squeezy is the seller and sends the receipt. Checkout product name: "Red Ass Supporter".
 
 ## 10. Accounts and links (all in red-ass-hub docs/config.js)
-Play: https://www.redass.net. Discord: https://discord.gg/gH577r59C8 (no expiry). Facebook: https://www.facebook.com/redassgame. YouTube: https://www.youtube.com/@RedAssGame. TikTok: hidden until Jonathan gives the new handle. X, Instagram, Twitch: none yet.
+Play: https://play.redass.net. Discord: https://discord.gg/gH577r59C8 (no expiry). Facebook: https://www.facebook.com/redassgame. YouTube: https://www.youtube.com/@RedAssGame. TikTok: hidden until Jonathan gives the new handle. X, Instagram, Twitch: none yet.
 
 ## 11. Before you ship anything public
 - 18+ and no kid appeal? Cosmetic only? No gambling look? No (R)/"trademarked"? Nothing unreleased announced?
