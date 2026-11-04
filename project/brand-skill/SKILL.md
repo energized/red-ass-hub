@@ -27,7 +27,7 @@ Use this for anything players or the public will see: game UI, copy, art, web pa
 Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never mean, never crude, never about real people. Short plain sentences. No invented claims.
 - Good: "Draw. Burn. Repeat." / "Your turn. Try not to embarrass yourself." / "Thanks for keeping the fire going."
 - Bad: anything cruel, sexual, kid-friendly cute, corporate ("leverage", "synergy"), or promising what is not live.
-- Spell the name "Red Ass". Wordmark: "Red" regular + "Ass" semibold, Oswald, uppercase, letter-spacing .05em.
+- Spell the name "Red Ass". Wordmark: "Red" plain + "Ass" bold, Oswald 600, uppercase, letter-spacing .05em.
 
 ## 4. Logo
 - Final = the "clean ace": a cream playing card tilted 9 degrees counter-clockwise with a big flame in the middle and an A (outlined paths, red) top-left and upside-down bottom-right. Same logo in the hub and the game (the Godot app is on hold).
