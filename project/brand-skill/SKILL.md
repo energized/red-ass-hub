@@ -3,7 +3,7 @@ name: red-ass-brand
 description: Red Ass brand rules: voice, logo, colours, fonts, themes, art and supporter badges. Use for anything players or the public see (UI, copy, art, posts, pages).
 ---
 
-# Red Ass brand (owner: Social Claude; only Jonathan saves changes)
+# Red Ass brand (owner: Social; only energizedGG saves changes)
 
 Use this for anything players or the public will see: game UI, copy, art, web pages, posts, emails, store text. DECISIONS.md in the team mailbox wins if it ever disagrees with this skill; tell Social about the mismatch. To suggest an addition, leave Social a note in inbox/social/ with a subject starting "brand skill:". Do not edit this skill.
 
@@ -19,7 +19,7 @@ Use this for anything players or the public will see: game UI, copy, art, web pa
 4. **No (R) symbol and never say "trademarked".** The Red Ass mark is not registered yet.
 5. **Nothing is announced before it is live.** Merch, Steam, Play Store, trademark and LLC are on hold: do not mention them.
 6. **No secrets or players' personal data** in chat, GitHub or wiki.
-7. **Social posting is on hold** until Jonathan gives the live date and a go. Do not post or schedule anything.
+7. **Social posting is on hold** until energizedGG gives the live date and a go. Do not post or schedule anything.
 8. No other companies' logos, characters or fonts; no real people; no real flags or hate symbols as items. Use original art and Google Fonts only.
 9. Ask energizedGG before anything about privacy, collecting data, ads, analytics, payments or legal text. Draft only; he decides.
 
@@ -30,7 +30,7 @@ Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never 
 - Spell the name "Red Ass". Wordmark: "Red" regular + "Ass" semibold, Oswald, uppercase, letter-spacing .05em.
 
 ## 4. Logo
-- Final = the "clean ace": a cream playing card tilted 9 degrees counter-clockwise with a big flame in the middle and an A (outlined paths, red) top-left and upside-down bottom-right. Same logo in the hub, the game and the Godot app.
+- Final = the "clean ace": a cream playing card tilted 9 degrees counter-clockwise with a big flame in the middle and an A (outlined paths, red) top-left and upside-down bottom-right. Same logo in the hub and the game (the Godot app is on hold).
 - Master file: red-ass-hub `project/logo-final.svg` (viewBox 120 0 160 210). Card x140 y20, 120x168, radius 12, fill #FBF8F3, stroke #1A1F2B width 5. Flame: red outer #C4211B, gold inner #E8AB35.
 - Do not redraw or add small flames. Use the master files; do not trace a new one.
 
@@ -45,14 +45,14 @@ Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never 
 ## 6. Fonts
 Oswald (headings, uppercase, 500/600) and IBM Plex Sans (body 400/500/600), IBM Plex Mono for code. Google Fonts only.
 
-## 7. Game themes and accessibility (live since 1.116.11)
+## 7. Game themes and accessibility (dated: reported live since 1.116.11; not rechecked, see the current live version before relying on it)
 - Themes: Dark (default), Light, Negative (photo-negative, trial). Colourblind modes with a strength slider and a four-colour deck. Prefs are additive: theme 'negative', cbMode, cbStrength, deck4.
 - Rarity frames (UI draws them, never baked into icons): Common smoke #93A0B2 (0 pips), Uncommon green #4CC790 (1), Rare blue #5B9BFF (2), Epic purple #A57BFF (3), Legendary gold #E8AB35 (4), Server First burn red #C4211B + gold edge (4). Always show frame colour + pip count + text label.
 
 ## 8. Art rules
 - Card backs: 5:7 portrait, subject centred, ~8% margin, bold gold ornamental frame, no text/logos/real people, must read at 56 px wide, shipped as 260 x 364 webp (quality ~58, under ~40 KB); the game adds rounded corners.
-- 3D (ComfyUI/Browser/Godot): glossy vinyl-toy humans, clearcoat material, colour slots c1/c2/c3 tinted at runtime (no KHR_materials_variants), stage Table blue with warm key light and cool rim #9FC3FF. See red-ass-hub `project/3d/3D-STYLE-GUIDE.md`.
-- Do not put the logo or "RED ASS" wordmark on cosmetic items unless Jonathan asks. Flames are fine as a motif.
+- 3D (ComfyUI/Browser; Godot is on hold): glossy vinyl-toy humans, clearcoat material, colour slots c1/c2/c3 tinted at runtime (no KHR_materials_variants), stage Table blue with warm key light and cool rim #9FC3FF. See red-ass-hub `project/3d/3D-STYLE-GUIDE.md`.
+- Do not put the logo or "RED ASS" wordmark on cosmetic items unless energizedGG asks. Flames are fine as a motif.
 - AI-made art (placeholders) is fine for now; before launch the tool's current terms are checked. Save prompt, date and original file.
 
 ## 9. Supporter badges (cosmetic thank-yous)
@@ -62,10 +62,10 @@ Oswald (headings, uppercase, 500/600) and IBM Plex Sans (body 400/500/600), IBM 
 - Page wording must say: optional, cosmetic only, never pay-to-win, 18+, and that Lemon Squeezy is the seller and sends the receipt. Checkout product name: "Red Ass Supporter".
 
 ## 10. Accounts and links (all in red-ass-hub docs/config.js)
-Play: https://play.redass.net. Discord: https://discord.gg/gH577r59C8 (no expiry). Facebook: https://www.facebook.com/redassgame. YouTube: https://www.youtube.com/@RedAssGame. TikTok: hidden until Jonathan gives the new handle. X, Instagram, Twitch: none yet.
+Play: https://play.redass.net. Discord: https://discord.gg/gH577r59C8 (no expiry). Facebook: https://www.facebook.com/redassgame. YouTube: https://www.youtube.com/@RedAssGame. TikTok: hidden until energizedGG gives the new handle. X, Instagram, Twitch: none yet.
 
 ## 11. Before you ship anything public
 - 18+ and no kid appeal? Cosmetic only? No gambling look? No (R)/"trademarked"? Nothing unreleased announced?
 - Colours and fonts from sections 5-6; logo from the master file; text readable and scalable; alt text on images.
 - Test at 360, 390 and 1280 px wide; real phones have never been tested, so say so plainly.
-- Any message for another team member goes in one copy-paste box for Jonathan.
+- Any message for another team member goes in one copy-paste box for energizedGG.

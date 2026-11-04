@@ -20,7 +20,7 @@
 - Card: x140 y20, 120x168, radius 12, fill #fbf8f3, stroke #1a1f2b width 5.
 - Top-left "A", Oswald 600, size 30, #c4211b.
 - Big flame center (outer red #c4211b, inner gold #e8ab35); small flames top-left under the A and upside down bottom-right.
-- Weak spots: "A" is live text (should be outlined to shapes); flames use <use> (some tools skip); no standalone logo.svg exists yet - make one. Ask energizedGG which logo issues he means.
+- Logo file (checked 2026-11-04 on branch social/brand-kit-refresh): the master is project/logo-final.svg. Identical copies (same blob) are project/logo-clean.svg and docs/img/logo.svg. In that file the "A" is already outlined paths and the flame is plain paths (no live text, no <use>). Ask energizedGG which logo issues he means.
 - Existing icons in game repo public/: favicon-48.png, icon-192.png, icon-512.png, icon-maskable-512.png, apple-touch-icon.png.
 - Later sizes: Play Store icon 512x512; Play feature graphic 1024x500; phone screenshots 1080x1920; App Store icon 1024x1024 (no transparency, no rounded corners).
 
@@ -46,11 +46,11 @@
 ## PART 3 (ComfyUI, a current crew member: makes the art and the 3D wardrobe)
 Card back spec: 5:7 portrait, generate large (1040x1456 or 1200x1680), shrunk to 260x364. Subject centered, ~8% margin, gold ornamental frame like the gilded set, no text/logos/real people/other companies' characters. Must read at 56 px wide: bold simple shapes.
 Already covered (don't duplicate): landscapes/water, space, foods, nature - full list in tools/cardbacks.json.
-Standing procedure per batch (Jonathan's rule):
+Standing procedure per batch (energizedGG's rule):
 1) Name each back by what the picture SHOWS.
 2) Fill in type, color and search words in tools/cardbacks.json (fields: id, name, src, type, color, words).
 3) Run tools/addbacks.py: trims pale edges, resizes to 260x364, saves webp q58 in public/backs/, updates Backpack names and search tags.
-4) Tell Jonathan about duplicates or look-alikes. They are marked "held" and NOT added. NEVER delete or skip anything until Jonathan decides.
+4) Tell energizedGG about duplicates or look-alikes. They are marked "held" and NOT added. NEVER delete or skip anything until energizedGG decides.
 Who does what: ComfyUI delivers image files (named by id, e.g. comet.png) plus filled-in cardbacks.json lines. Browser builds, Backend checks, Helix approves, energizedGG presses Publish. Social owns the kit.
 
 Style guide for backs:
