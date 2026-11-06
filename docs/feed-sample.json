@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "site": "Red Ass",
+  "site_url": "https://news.redass.net/",
+  "launch_date": null,
+  "updated": "2026-11-05",
+  "sample": true,
+  "news": [
+    {
+      "title": "SAMPLE: Captions for voice chat",
+      "date": "2026-10-12",
+      "summary": "SAMPLE ENTRY for layout testing only. Turn on Show captions in Settings to see what people say on voice chat.",
+      "link": "https://news.redass.net/news.html"
+    },
+    {
+      "title": "SAMPLE: No more frozen tables",
+      "date": "2026-10-09",
+      "summary": "SAMPLE ENTRY for layout testing only. If a phone falls asleep mid-game, the table keeps going.",
+      "link": "https://news.redass.net/news.html"
+    }
+  ]
+}
