@@ -27,8 +27,9 @@
 ## COLORS
 - Brand ink and muted text (art, posts, pages, logo): ink #1A1F2B, muted text #4F5868.
 - Light: bg #eef0f3, surface #ffffff, accent red #c4211b, gold #e8ab35, good #1d7a4a.
-- Game light theme (UI), unverified: text #161a22, muted #566070.
-- Dark: bg #0f1217, surface #1a1f28, text #eceef2, accent #ff5a4f.
+- Game light theme (UI), checked 2026-11-06 against the live game CSS (energized/Red-Ass main, game 1.127.13, source/game/template.html): page bg #e8e0d0, surface #f8f4ec, surface2 #ddd3c0, line #a99d86, text #1a1f2b, muted #4f5868, accent text #a81a14, gold text #7f5504, good #1d7a4a. The older figures text #161a22 and muted #566070 were wrong for the light theme: #161a22 is the playing-card ink (--ink, used in every theme) and #566070 was not found anywhere in the game page CSS.
+- Game dark theme (the default), same check: page bg #17202b, cream panel surface #fbf8f3 (text on it #1a1f2b), light text #e9edf3, muted #a3afc0, accent text #ff5a4f, gold #e8ab35, good #4cc790.
+- Dark (hub or older notes, not the game; not rechecked): bg #0f1217, surface #1a1f28, text #eceef2, accent #ff5a4f.
 - Table felt (default): #17202b, lighter #1e2a38, text #e9edf3.
 - Other table looks: green #0f3d2a / #17533a (gold #f0cf6a), purple #1b0f26 (gold #ff9d2e), pink #4a1030, navy #0e1d4a, orange-brown #633a17.
 
