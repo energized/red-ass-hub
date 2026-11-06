@@ -46,6 +46,7 @@ Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never 
 Oswald (headings, uppercase, 500/600) and IBM Plex Sans (body 400/500/600), IBM Plex Mono for code. Google Fonts only.
 
 ## 7. Game themes and accessibility (dated: reported live since 1.116.11; not rechecked, see the current live version before relying on it)
+- Do not use the theme list or rarity pips in public wording until they are checked against the live game.
 - Themes: Dark (default), Light, Negative (photo-negative, trial). Colourblind modes with a strength slider and a four-colour deck. Prefs are additive: theme 'negative', cbMode, cbStrength, deck4.
 - Rarity frames (UI draws them, never baked into icons): Common smoke #93A0B2 (0 pips), Uncommon green #4CC790 (1), Rare blue #5B9BFF (2), Epic purple #A57BFF (3), Legendary gold #E8AB35 (4), Server First burn red #C4211B + gold edge (4). Always show frame colour + pip count + text label.
 

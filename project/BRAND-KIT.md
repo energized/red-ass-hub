@@ -19,13 +19,15 @@
 - Cream playing card tilted 9 degrees counter-clockwise, flame on it. viewBox 120 0 160 210.
 - Card: x140 y20, 120x168, radius 12, fill #fbf8f3, stroke #1a1f2b width 5.
 - Top-left "A", Oswald 600, size 30, #c4211b.
-- Big flame center (outer red #c4211b, inner gold #e8ab35); small flames top-left under the A and upside down bottom-right.
+- Big flame center (outer red #c4211b, inner gold #e8ab35). An A top-left and the same A upside down bottom-right. No small flames.
 - Logo file (checked 2026-11-04 on branch social/brand-kit-refresh): the master is project/logo-final.svg. Identical copies (same blob) are project/logo-clean.svg and docs/img/logo.svg. In that file the "A" is already outlined paths and the flame is plain paths (no live text, no <use>). Ask energizedGG which logo issues he means.
 - Existing icons in game repo public/: favicon-48.png, icon-192.png, icon-512.png, icon-maskable-512.png, apple-touch-icon.png.
 - Later sizes: Play Store icon 512x512; Play feature graphic 1024x500; phone screenshots 1080x1920; App Store icon 1024x1024 (no transparency, no rounded corners).
 
 ## COLORS
-- Light: bg #eef0f3, surface #ffffff, text #161a22, muted #566070, accent red #c4211b, gold #e8ab35, good #1d7a4a.
+- Brand ink and muted text (art, posts, pages, logo): ink #1A1F2B, muted text #4F5868.
+- Light: bg #eef0f3, surface #ffffff, accent red #c4211b, gold #e8ab35, good #1d7a4a.
+- Game light theme (UI), unverified: text #161a22, muted #566070.
 - Dark: bg #0f1217, surface #1a1f28, text #eceef2, accent #ff5a4f.
 - Table felt (default): #17202b, lighter #1e2a38, text #e9edf3.
 - Other table looks: green #0f3d2a / #17533a (gold #f0cf6a), purple #1b0f26 (gold #ff9d2e), pink #4a1030, navy #0e1d4a, orange-brown #633a17.
