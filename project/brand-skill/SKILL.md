@@ -45,9 +45,10 @@ Playful, warm, cheeky, a little spicy: burns and teasing between friends. Never 
 ## 6. Fonts
 Oswald (headings, uppercase, 500/600) and IBM Plex Sans (body 400/500/600), IBM Plex Mono for code. Google Fonts only.
 
-## 7. Game themes and accessibility (dated: reported live since 1.116.11; not rechecked, see the current live version before relying on it)
-- Themes: Dark (default), Light, Negative (photo-negative, trial). Colourblind modes with a strength slider and a four-colour deck. Prefs are additive: theme 'negative', cbMode, cbStrength, deck4.
-- Rarity frames (UI draws them, never baked into icons): Common smoke #93A0B2 (0 pips), Uncommon green #4CC790 (1), Rare blue #5B9BFF (2), Epic purple #A57BFF (3), Legendary gold #E8AB35 (4), Server First burn red #C4211B + gold edge (4). Always show frame colour + pip count + text label.
+## 7. Game themes and accessibility (themes rechecked 2026-11-06 against energized/Red-Ass main, game 1.127.13; rarity frames NOT rechecked)
+- Themes (checked in the game code): Dark (default; "auto" means Dark), Light, Negative (everything in reversed colours, labelled "just for fun" in the game). Colourblind modes: Protanopia, Deuteranopia, Tritanopia, with a strength slider (10-100%), plus a four-colour deck (hearts red, diamonds blue, clubs green, spades black). Saved prefs: theme ('dark', 'light' or 'negative'), cbMode ('protan', 'deutan', 'tritan' or off), cbStrength (0-100), deck4 (on/off).
+- Game Light theme colours (checked): page #E8E0D0, surface #F8F4EC, text #1A1F2B, muted #4F5868. Playing-card ink is #161A22 in every theme. See project/BRAND-KIT.md for the full list.
+- Rarity frames: NOT confirmed. The colours and pip counts below were not found in the game page CSS, source/server/themeclient.part.py or doll.json when checked on 2026-11-06. Do not use rarity colours or pips in public wording until they are checked against the live game: Common smoke #93A0B2 (0 pips), Uncommon green #4CC790 (1), Rare blue #5B9BFF (2), Epic purple #A57BFF (3), Legendary gold #E8AB35 (4), Server First burn red #C4211B + gold edge (4). Rule that holds regardless: the UI draws frames (never baked into icons) and always shows frame colour + pip count + text label.
 
 ## 8. Art rules
 - Card backs: 5:7 portrait, subject centred, ~8% margin, bold gold ornamental frame, no text/logos/real people, must read at 56 px wide, shipped as 260 x 364 webp (quality ~58, under ~40 KB); the game adds rounded corners.
