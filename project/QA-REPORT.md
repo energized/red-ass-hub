@@ -100,3 +100,7 @@ Minor notes, no action needed:
 - **That the outside links really open** (Facebook, TikTok, YouTube, Terms, Privacy, the game). I checked the addresses are correct; I could not visit them. The TikTok handle `@ra.tiktok19` may be a placeholder, per Jonathan.
 - **Screen readers** (VoiceOver, TalkBack) and very large text settings on a phone.
 - **Slow mobile connections** and the share preview picture (og.png) on Facebook and other apps.
+
+
+## Update 2026-11-13: table maximum is now 6
+energizedGG lowered the maximum players at one table from 8 to 6. The Setup line above ("2 to 8 players ... 6 decks for 7-8") describes the old limit and is kept as history. The live wording is now "2 to 6 players" and "4 decks shuffled together" (docs/how-to-play.html, project/content/how-to-play.md). Not re-checked against the game engine: Browser/Backend should confirm 4 decks for every table size.

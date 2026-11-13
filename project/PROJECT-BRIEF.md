@@ -62,3 +62,5 @@ Social Claude coordinates, merges their work, and reports to Jonathan.
 - 2026-10-17 10:45: RULE (Jonathan): do NOT post or schedule anything through Metricool (or any social account) until Jonathan gives the go and the live/launch date. The posting-plan doc's dates (19 Oct start) were my assumption, not approved. Nothing has been posted or scheduled.
 - 2026-10-23 20:24: Jonathan: news.redass.net colours are THE Red Ass colours; game (redass.net 1.116.8) should match. Spec + draft CSS sent to Browser via mailbox: project/game-theme/table-theme.css, before-after.png.
 - 2026-10-23 20:33: Jonathan: ship 3 themes Dark (default, hub colours) / Light / Negative (photo-negative; trial, may be removed) + colourblind settings (3 modes + strength slider, plus 4-colour deck). Spec sent to Browser.
+
+- 2026-11-13: energizedGG lowered the maximum players at one table from 8 to 6. How-to-play, FAQ and page words now say 2 to 6 players and 4 decks. The 2026-10-13 entry above that mentions "6 decks for 7-8" is old history and is left as written.

@@ -10,8 +10,8 @@ Tip: In the game, open the Menu and tap "How to play" for a guided practice game
 
 ## #setup
 ### Setup
-- 2 to 8 players. The host can fill empty seats with bots.
-- Up to 6 players: 4 decks shuffled together. 7 or 8 players: 6 decks.
+- 2 to 6 players. The host can fill empty seats with bots.
+- 4 decks shuffled together.
 - Everyone gets 7 cards.
 - One card is turned up to start the pile. If it's a Jack, Queen, King or a 3, it's burned and another card is turned up.
 - Careful: if the first card is a 2 or a 4, it's live. The first player has to answer it.
@@ -77,7 +77,7 @@ Whoever crosses the line? They're the Red Ass.
 ### FAQ
 
 **How many people can play?**
-2 to 8. The host can add bots to fill the table.
+2 to 6. The host can add bots to fill the table.
 
 **Can I play the card I just drew?**
 No. Drawing ends your turn.
