@@ -68,3 +68,161 @@ Housekeeping:
 - Save model, prompt and seed next to each image so any back can be remade.
 - No prompts naming living artists, brands or copyrighted characters.
 - Never put secrets or keys in chat, GitHub or the wiki.
+
+## STANDARD HEADER (added 2026-11-13 by Social, branch social/standard-header; DRAFT until energizedGG says yes)
+The header on https://news.redass.net/ is the Red Ass standard header for the marketing site, policy pages, wiki and admin pages.
+- NOT in scope: the in-game table screen. A slim in-game variant is NOT part of this job and has no spec here.
+- Source (checked 2026-11-13): the live page, plus energized/red-ass-hub main (39bfc3e) docs/index.html, docs/css/style.css, docs/js/main.js, docs/config.js. The header rules in the repo CSS and the live CSS read the same.
+- Copy the header, do not redraw it. If the hub header changes, this section changes first (energizedGG's yes needed).
+
+### The look, in numbers
+- Bar: sticky at the top, full width, content centered in a 1120px column with 16px side padding. Height at least 64px, plus a 1px bottom line #2c3b4d.
+- Background: dark navy rgba(18,25,34,.94) (that is #121922 at 94%), with an 8px background blur. Header-only shade, not in the color list above; it sits in the table-felt family (#17202b).
+- Logo: img/logo-small.svg (copy of the mark, same blob family as logo-final.svg), 40x40 px (34x34 under 375px wide), with the wordmark "RED ASS" beside it: "Red" regular + "Ass" bold, Oswald, uppercase, letter-spacing .05em, 1.35rem (1.15rem under 375px), color #e9edf3. Gap between logo and wordmark 8px. The whole logo + wordmark is one link to the site's home, tap height at least 44px. Keep at least 8px clear on all sides inside the bar (the bar's own 16px side padding covers the left edge); no other element goes inside that space. Draft rule: the 8px clearance is what the hub does today, not a number written down before.
+- Nav items, in this order: Home, News, How to Play, Gallery. Do not add, drop or reorder on one site only. Oswald 500, 1rem, uppercase, letter-spacing .06em, color #e9edf3, 14px side padding, 44px tall, 4px between items, hover background #1e2a38 with white text.
+- Current page: the item gets aria-current="page", gold text #e8ab35 and a 3px gold underline (#e8ab35) along the bottom of the item. Only one item at a time.
+- PLAY NOW button, far right on desktop: glossy red, background #c4211b, white text, 2px border #e0443d, radius 10px, shadow 0 4px 0 #a01a15 plus a soft red glow 0 10px 24px -8px rgba(196,33,27,.7). Oswald 600, 1rem, uppercase, letter-spacing .06em, small white play-triangle icon before the words. 44px tall, padding 8px 16px (8px 12px under 375px). Hover: background #d42a23, lifts 1px. Pressed: sinks 2px, shadow 0 2px 0 #a01a15. Opens in a new tab (target="_blank" rel="noopener"). Same button on every site; never recolored, never renamed.
+- Focus ring: 3px gold outline (#e8ab35), 3px offset. Skip link ("Skip to content") sits above the header.
+
+### Phone behavior (under 860px wide)
+- Nav links are hidden. A Menu button (48x48, hamburger icon, 2px border #a3afc0, radius 10px) sits at the far right, after the PLAY NOW button. Left to right on a phone: logo + wordmark, PLAY NOW, Menu.
+- PLAY NOW always stays visible in the bar, never inside the menu.
+- Open menu: a full-width panel drops from the bottom of the bar (background #121922, 1px line #2c3b4d), one link per row, 52px tall, 1.15rem, thin divider lines. The current page gets a 4px gold bar on its left edge instead of the underline. The Menu button turns gold while open and says "Close" to screen readers. Escape or a tap outside closes it.
+- 860px and wider: Menu button hidden, links shown in the bar.
+- Under 375px: smaller logo (34px), smaller wordmark (1.15rem), tighter button padding, 8px gaps.
+- Motion: the lift and sink effects switch off for visitors who ask for reduced motion.
+
+### Which links change per site
+Everything else is fixed. Only these four links and the current-page mark change.
+| Item | On news.redass.net (hub, as built) | On other Red Ass sites (PROPOSED, needs energizedGG's yes) |
+|---|---|---|
+| Logo + wordmark, Home | index.html (hub home) | https://www.redass.net/ (landing page) |
+| News | news.html | https://news.redass.net/news.html |
+| How to Play | how-to-play.html | https://news.redass.net/how-to-play.html |
+| Gallery | gallery.html | https://news.redass.net/gallery.html |
+| PLAY NOW | PLAY_URL in config.js = https://www.redass.net | same address |
+| Current page mark (aria-current="page") | set on the page you are on | set on the item for the section you are in; none if the page is not one of the four (policy, wiki, admin) |
+Open questions for energizedGG: (1) this kit says the game lives at play.redass.net, but the hub's PLAY_URL is https://www.redass.net - which one should PLAY NOW point to everywhere? (2) Should Home on non-hub sites go to redass.net as proposed? Until answered, copy the hub values.
+
+### Ready-to-copy snippet (taken from the hub, 2026-11-13)
+Needs: the Google Fonts line, img/logo-small.svg copied from the hub (docs/img/logo-small.svg), the HTML, the CSS and the small menu script. Change only the hrefs in the table above and move aria-current to the right link.
+
+HTML (put right after the opening body tag):
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600&display=swap">
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Red Ass home"><img src="img/logo-small.svg" alt="" width="40" height="40"><span class="wordmark">Red <b>Ass</b></span></a>
+    <button class="menu-btn" type="button" aria-controls="site-nav" aria-expanded="false" data-open-label="Menu" data-close-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Menu</span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="how-to-play.html">How to Play</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-play" href="https://www.redass.net" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a>
+  </div>
+</header>
+```
+
+CSS (the pieces the header needs; same values as the hub stylesheet):
+```css
+:root{
+  --felt2:#1e2a38; --felt-line:#2c3b4d; --felt-fg:#e9edf3; --felt-muted:#a3afc0;
+  --ink:#1a1f2b; --red:#c4211b; --red-dark:#a01a15; --gold:#e8ab35;
+  --display:'Oswald','Arial Narrow',Impact,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gutter:16px; --max:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font:400 1rem/1.6 var(--body);color:var(--felt-fg);background-color:#17202b}
+img{max-width:100%;height:auto;display:block}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.wordmark{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-weight:400;white-space:nowrap}
+.wordmark b{font-weight:600}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  min-height:48px;padding:10px 22px;border-radius:10px;border:2px solid transparent;
+  font:600 1.05rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.06em;
+  text-decoration:none;cursor:pointer;transition:transform .15s ease, background-color .15s ease;
+}
+.btn-play{background:var(--red);color:#fff;border-color:#e0443d;box-shadow:0 4px 0 var(--red-dark),0 10px 24px -8px rgba(196,33,27,.7)}
+.btn-play:hover{background:#d42a23;color:#fff;transform:translateY(-1px)}
+.btn-play:active{transform:translateY(2px);box-shadow:0 2px 0 var(--red-dark)}
+.btn-play svg{width:1em;height:1em}
+
+/* header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(18,25,34,.94);border-bottom:1px solid var(--felt-line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.bar{display:flex;align-items:center;gap:10px;min-height:64px}
+.brand{display:flex;align-items:center;gap:8px;color:var(--felt-fg);text-decoration:none;font-size:1.35rem;min-height:44px;margin-right:auto}
+.brand img{width:40px;height:40px}
+.brand:hover{color:#fff}
+.nav{display:none}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:8px;color:var(--felt-fg);text-decoration:none;font:500 1rem var(--display);text-transform:uppercase;letter-spacing:.06em}
+.nav a:hover{background:var(--felt2);color:#fff}
+.nav a[aria-current="page"]{color:var(--gold);box-shadow:inset 0 -3px 0 var(--gold)}
+.site-header .btn-play{min-height:44px;padding:8px 16px;font-size:1rem}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;border:2px solid var(--felt-muted);background:transparent;color:var(--felt-fg);cursor:pointer;padding:0}
+.menu-btn svg{width:24px;height:24px}
+/* the button sits before the menu in the page (so Tab goes from it into the links) but shows at the far right */
+.menu-btn{order:3}
+.menu-btn[aria-expanded="true"]{border-color:var(--gold);color:var(--gold)}
+/* phone menu: drops down like a dealt row */
+.nav.open{display:block;position:absolute;left:0;right:0;top:100%;background:#121922;border-bottom:1px solid var(--felt-line);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -10px rgba(0,0,0,.6)}
+.nav.open ul{flex-direction:column}
+.nav.open a{min-height:52px;font-size:1.15rem;border-bottom:1px solid var(--felt-line);border-radius:0}
+.nav.open a[aria-current="page"]{box-shadow:inset 4px 0 0 var(--gold);padding-left:18px}
+@media (min-width:860px){
+  .menu-btn{display:none}
+  .nav,.nav.open{display:block;position:static;background:none;border:0;padding:0;box-shadow:none}
+  .nav.open ul{flex-direction:row}
+  .nav.open a{min-height:44px;font-size:1rem;border:0;border-radius:8px}
+  .brand{margin-right:12px}
+  .nav{margin-right:auto}
+}
+@media (max-width:374px){
+  .brand .wordmark{font-size:1.15rem}
+  .brand img{width:34px;height:34px}
+  .site-header .btn-play{padding:8px 12px}
+  .bar{gap:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .btn-play:hover{transform:none}
+}
+```
+
+JS (menu on phones; put before the closing body tag):
+```html
+<script>
+(function () {
+  var btn = document.querySelector('.menu-btn');
+  var nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    var label = btn.querySelector('.sr-only');
+    var setOpen = function (open) {
+      nav.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (label) label.textContent = open ? btn.getAttribute('data-close-label') : btn.getAttribute('data-open-label');
+    };
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+    });
+  }
+})();
+</script>
+```
+Notes: the hub also sets the PLAY NOW address from config.js (data-play attribute); other sites can write the address straight into the href as above. The page behind the header needs a dark background such as #17202b so the white wordmark can be read. Last checked against the live hub 2026-11-13; the phone layout is read from the CSS, not yet tested on a real phone.
