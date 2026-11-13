@@ -31,6 +31,7 @@
 - Game dark theme (the default), same check: page bg #17202b, cream panel surface #fbf8f3 (text on it #1a1f2b), light text #e9edf3, muted #a3afc0, accent text #ff5a4f, gold #e8ab35, good #4cc790.
 - Dark (hub or older notes, not the game; not rechecked): bg #0f1217, surface #1a1f28, text #eceef2, accent #ff5a4f.
 - Table felt (default): #17202b, lighter #1e2a38, text #e9edf3.
+- Header colors (named, added 2026-11-13, approved by energizedGG for Social to decide): header navy #121922 (the bar background is this at 94%, rgba(18,25,34,.94), and the phone menu panel is solid #121922); header line #2c3b4d (1px lines under the bar, under menu rows and in the kit's felt border). Used for the Standard header only. Reason: both are what the live hub already uses, and the header is copied, not redrawn, so naming them keeps every site identical; mapping them to the nearest kit colors (#17202b, #1e2a38) would change the live look.
 - Other table looks: green #0f3d2a / #17533a (gold #f0cf6a), purple #1b0f26 (gold #ff9d2e), pink #4a1030, navy #0e1d4a, orange-brown #633a17.
 
 ## FONTS (Google Fonts)
@@ -69,43 +70,44 @@ Housekeeping:
 - No prompts naming living artists, brands or copyrighted characters.
 - Never put secrets or keys in chat, GitHub or the wiki.
 
-## STANDARD HEADER (added 2026-11-13 by Social, branch social/standard-header; DRAFT until energizedGG says yes)
+## STANDARD HEADER (added 2026-11-13 by Social, branch social/standard-header)
+STATUS: APPROVED by energizedGG 2026-11-13 for these points: (1) PLAY NOW always points to https://play.redass.net; (2) the Home / News / How to Play / Gallery links on sites outside the hub, as in the table below; (3) the two header shades are named header colors in the COLORS list (Social's decision, as energizedGG asked). The phone layout is read from the CSS, not yet tested on a real phone.
 The header on https://news.redass.net/ is the Red Ass standard header for the marketing site, policy pages, wiki and admin pages.
 - NOT in scope: the in-game table screen. A slim in-game variant is NOT part of this job and has no spec here.
-- Source (checked 2026-11-13): the live page, plus energized/red-ass-hub main (39bfc3e) docs/index.html, docs/css/style.css, docs/js/main.js, docs/config.js. The header rules in the repo CSS and the live CSS read the same.
+- Source (checked 2026-11-13): the live page, plus energized/red-ass-hub main (39bfc3e) docs/index.html, docs/css/style.css, docs/js/main.js, docs/config.js. The header rules in the repo CSS and the live CSS read the same. One difference on purpose: the hub's PLAY_URL in config.js still says https://www.redass.net, which is old; this spec uses https://play.redass.net.
 - Copy the header, do not redraw it. If the hub header changes, this section changes first (energizedGG's yes needed).
 
 ### The look, in numbers
-- Bar: sticky at the top, full width, content centered in a 1120px column with 16px side padding. Height at least 64px, plus a 1px bottom line #2c3b4d.
-- Background: dark navy rgba(18,25,34,.94) (that is #121922 at 94%), with an 8px background blur. Header-only shade, not in the color list above; it sits in the table-felt family (#17202b).
+- Bar: sticky at the top, full width, content centered in a 1120px column with 16px side padding. Height at least 64px, plus a 1px bottom line in header line #2c3b4d.
+- Background: header navy #121922 at 94% (rgba(18,25,34,.94)), with an 8px background blur. Both shades are named header colors in the COLORS list.
 - Logo: img/logo-small.svg (copy of the mark, same blob family as logo-final.svg), 40x40 px (34x34 under 375px wide), with the wordmark "RED ASS" beside it: "Red" regular + "Ass" bold, Oswald, uppercase, letter-spacing .05em, 1.35rem (1.15rem under 375px), color #e9edf3. Gap between logo and wordmark 8px. The whole logo + wordmark is one link to the site's home, tap height at least 44px. Keep at least 8px clear on all sides inside the bar (the bar's own 16px side padding covers the left edge); no other element goes inside that space. Draft rule: the 8px clearance is what the hub does today, not a number written down before.
 - Nav items, in this order: Home, News, How to Play, Gallery. Do not add, drop or reorder on one site only. Oswald 500, 1rem, uppercase, letter-spacing .06em, color #e9edf3, 14px side padding, 44px tall, 4px between items, hover background #1e2a38 with white text.
 - Current page: the item gets aria-current="page", gold text #e8ab35 and a 3px gold underline (#e8ab35) along the bottom of the item. Only one item at a time.
-- PLAY NOW button, far right on desktop: glossy red, background #c4211b, white text, 2px border #e0443d, radius 10px, shadow 0 4px 0 #a01a15 plus a soft red glow 0 10px 24px -8px rgba(196,33,27,.7). Oswald 600, 1rem, uppercase, letter-spacing .06em, small white play-triangle icon before the words. 44px tall, padding 8px 16px (8px 12px under 375px). Hover: background #d42a23, lifts 1px. Pressed: sinks 2px, shadow 0 2px 0 #a01a15. Opens in a new tab (target="_blank" rel="noopener"). Same button on every site; never recolored, never renamed.
+- PLAY NOW button, far right on desktop: glossy red, background #c4211b, white text, 2px border #e0443d, radius 10px, shadow 0 4px 0 #a01a15 plus a soft red glow 0 10px 24px -8px rgba(196,33,27,.7). Oswald 600, 1rem, uppercase, letter-spacing .06em, small white play-triangle icon before the words. 44px tall, padding 8px 16px (8px 12px under 375px). Hover: background #d42a23, lifts 1px. Pressed: sinks 2px, shadow 0 2px 0 #a01a15. Always links to https://play.redass.net on every site and page, and opens in a new tab (target="_blank" rel="noopener"). Same button on every site; never recolored, never renamed, never pointed anywhere else.
 - Focus ring: 3px gold outline (#e8ab35), 3px offset. Skip link ("Skip to content") sits above the header.
 
 ### Phone behavior (under 860px wide)
 - Nav links are hidden. A Menu button (48x48, hamburger icon, 2px border #a3afc0, radius 10px) sits at the far right, after the PLAY NOW button. Left to right on a phone: logo + wordmark, PLAY NOW, Menu.
 - PLAY NOW always stays visible in the bar, never inside the menu.
-- Open menu: a full-width panel drops from the bottom of the bar (background #121922, 1px line #2c3b4d), one link per row, 52px tall, 1.15rem, thin divider lines. The current page gets a 4px gold bar on its left edge instead of the underline. The Menu button turns gold while open and says "Close" to screen readers. Escape or a tap outside closes it.
+- Open menu: a full-width panel drops from the bottom of the bar (background header navy #121922, 1px line header line #2c3b4d), one link per row, 52px tall, 1.15rem, thin divider lines. The current page gets a 4px gold bar on its left edge instead of the underline. The Menu button turns gold while open and says "Close" to screen readers. Escape or a tap outside closes it.
 - 860px and wider: Menu button hidden, links shown in the bar.
 - Under 375px: smaller logo (34px), smaller wordmark (1.15rem), tighter button padding, 8px gaps.
 - Motion: the lift and sink effects switch off for visitors who ask for reduced motion.
 
 ### Which links change per site
-Everything else is fixed. Only these four links and the current-page mark change.
-| Item | On news.redass.net (hub, as built) | On other Red Ass sites (PROPOSED, needs energizedGG's yes) |
+Everything else is fixed. Only the four nav links (and the logo link) and the current-page mark change. PLAY NOW does not change: it is https://play.redass.net everywhere.
+| Item | On news.redass.net (the hub) | On every other Red Ass site (main site, game policy pages, wiki, admin) |
 |---|---|---|
-| Logo + wordmark, Home | index.html (hub home) | https://www.redass.net/ (landing page) |
+| Logo + wordmark, Home | index.html (stays on the hub) | https://www.redass.net/ |
 | News | news.html | https://news.redass.net/news.html |
 | How to Play | how-to-play.html | https://news.redass.net/how-to-play.html |
 | Gallery | gallery.html | https://news.redass.net/gallery.html |
-| PLAY NOW | PLAY_URL in config.js = https://www.redass.net | same address |
-| Current page mark (aria-current="page") | set on the page you are on | set on the item for the section you are in; none if the page is not one of the four (policy, wiki, admin) |
-Open questions for energizedGG: (1) this kit says the game lives at play.redass.net, but the hub's PLAY_URL is https://www.redass.net - which one should PLAY NOW point to everywhere? (2) Should Home on non-hub sites go to redass.net as proposed? Until answered, copy the hub values.
+| PLAY NOW | https://play.redass.net | https://play.redass.net |
+| Current page mark (aria-current="page") | set on the page you are on | none of the four are on these sites, so leave it off, unless the page really is one of them (the hub pages) |
+On the hub itself, Home stays on the hub (index.html).
 
-### Ready-to-copy snippet (taken from the hub, 2026-11-13)
-Needs: the Google Fonts line, img/logo-small.svg copied from the hub (docs/img/logo-small.svg), the HTML, the CSS and the small menu script. Change only the hrefs in the table above and move aria-current to the right link.
+### Ready-to-copy snippet (taken from the hub, 2026-11-13; PLAY NOW address and header colors updated 2026-11-13)
+Needs: the Google Fonts line, img/logo-small.svg copied from the hub (docs/img/logo-small.svg), the HTML, the CSS and the small menu script. Change only the hrefs in the table above and move aria-current to the right link. The hrefs below are the HUB version; on other sites swap in the right-hand column of the table. Do not change the PLAY NOW href.
 
 HTML (put right after the opening body tag):
 ```html
@@ -124,15 +126,16 @@ HTML (put right after the opening body tag):
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
     </nav>
-    <a class="btn btn-play" href="https://www.redass.net" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a>
+    <a class="btn btn-play" href="https://play.redass.net" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a>
   </div>
 </header>
 ```
 
-CSS (the pieces the header needs; same values as the hub stylesheet):
+CSS (the pieces the header needs; same values as the hub stylesheet, with the two header shades now named):
 ```css
 :root{
-  --felt2:#1e2a38; --felt-line:#2c3b4d; --felt-fg:#e9edf3; --felt-muted:#a3afc0;
+  --header-navy:#121922; --header-line:#2c3b4d;
+  --felt2:#1e2a38; --felt-fg:#e9edf3; --felt-muted:#a3afc0;
   --ink:#1a1f2b; --red:#c4211b; --red-dark:#a01a15; --gold:#e8ab35;
   --display:'Oswald','Arial Narrow',Impact,sans-serif;
   --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -160,7 +163,7 @@ img{max-width:100%;height:auto;display:block}
 .btn-play svg{width:1em;height:1em}
 
 /* header */
-.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(18,25,34,.94);border-bottom:1px solid var(--felt-line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(18,25,34,.94);border-bottom:1px solid var(--header-line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .bar{display:flex;align-items:center;gap:10px;min-height:64px}
 .brand{display:flex;align-items:center;gap:8px;color:var(--felt-fg);text-decoration:none;font-size:1.35rem;min-height:44px;margin-right:auto}
 .brand img{width:40px;height:40px}
@@ -177,9 +180,9 @@ img{max-width:100%;height:auto;display:block}
 .menu-btn{order:3}
 .menu-btn[aria-expanded="true"]{border-color:var(--gold);color:var(--gold)}
 /* phone menu: drops down like a dealt row */
-.nav.open{display:block;position:absolute;left:0;right:0;top:100%;background:#121922;border-bottom:1px solid var(--felt-line);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -10px rgba(0,0,0,.6)}
+.nav.open{display:block;position:absolute;left:0;right:0;top:100%;background:var(--header-navy);border-bottom:1px solid var(--header-line);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -10px rgba(0,0,0,.6)}
 .nav.open ul{flex-direction:column}
-.nav.open a{min-height:52px;font-size:1.15rem;border-bottom:1px solid var(--felt-line);border-radius:0}
+.nav.open a{min-height:52px;font-size:1.15rem;border-bottom:1px solid var(--header-line);border-radius:0}
 .nav.open a[aria-current="page"]{box-shadow:inset 4px 0 0 var(--gold);padding-left:18px}
 @media (min-width:860px){
   .menu-btn{display:none}
@@ -225,4 +228,4 @@ JS (menu on phones; put before the closing body tag):
 })();
 </script>
 ```
-Notes: the hub also sets the PLAY NOW address from config.js (data-play attribute); other sites can write the address straight into the href as above. The page behind the header needs a dark background such as #17202b so the white wordmark can be read. Last checked against the live hub 2026-11-13; the phone layout is read from the CSS, not yet tested on a real phone.
+Notes: the hub also sets the PLAY NOW address from config.js (PLAY_URL, applied to every link marked data-play by docs/js/main.js lines 29-30). The hub fix is to set PLAY_URL to https://play.redass.net and change the hard-coded hrefs; other sites can write the address straight into the href as above. The page behind the header needs a dark background such as #17202b so the white wordmark can be read. Last checked against the live hub 2026-11-13; the phone layout is read from the CSS, not yet tested on a real phone.
