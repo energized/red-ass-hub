@@ -16,7 +16,7 @@ Facebook · TikTok · YouTube · Discord (coming soon)
 
 18+ only. Red Ass is for adults. Chat and voice chat are with real people and can get spicy.
 
-Links: Terms (https://www.redass.net/terms.html) · Privacy (https://www.redass.net/privacy.html)
+Links: Terms (https://play.redass.net/terms) · Privacy (https://play.redass.net/privacy)
 
 © 2026 Red Ass
 

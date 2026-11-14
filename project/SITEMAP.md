@@ -19,7 +19,7 @@ Read PROJECT-BRIEF.md and BRAND-KIT.md first. The game's code is a READ-ONLY cop
 ## Section ids (Ace builds these with placeholder text; Jack writes the words for each id)
 Every page: header nav (Home, News, How to Play, Gallery, Play Now button), footer (18+ note, social links, "Red Ass is a card game by Jonathan's family and friends"-style line ONLY if Jack can support it; otherwise plain "© 2026 Red Ass" - no (R), no "trademark").
 
-index.html: #hero (headline, sub-line, Play Now button -> https://www.redass.net), #whats-new (latest 3 news items from feed), #how-it-works (3 short steps teaser -> how-to-play), #looks (strip of card backs -> gallery, "looks only, never pay-to-win"), #social (cards for Facebook, TikTok, YouTube, Discord-coming-soon), #age (18+ note)
+index.html: #hero (headline, sub-line, Play Now button -> https://play.redass.net), #whats-new (latest 3 news items from feed), #how-it-works (3 short steps teaser -> how-to-play), #looks (strip of card backs -> gallery, "looks only, never pay-to-win"), #social (cards for Facebook, TikTok, YouTube, Discord-coming-soon), #age (18+ note)
 news.html: #news-intro, #news-list (all feed items), #news-fallback (shown when feed unavailable)
 how-to-play.html: #htp-intro, #setup, #turn, #special-cards, #last-card, #scoring, #winning, #faq
 gallery.html: #gallery-intro, #backs (grid of all 40 with names), #dolls (coming soon)
