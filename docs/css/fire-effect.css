@@ -1,0 +1,104 @@
+/* =====================================================================
+   Red Ass - fire effect, blend B, with an 18px floor   (preview only)
+   For the words BURN and SHUFFLING. Not pushed anywhere, not on any live site.
+
+   MARKUP (three nested spans; works on any element/size):
+     <span class="fx-fire"><span class="fx-in" data-t="Burn"><span class="t">Burn</span></span></span>
+   The page must also carry the SVG filters #fB (full) and #fBs (gentle)
+   (copy the <svg> block from fire-effect-final.html).
+
+   THE FLOOR (size-based, per element, no JS):
+     --fx-on  = 1 when the element's own font-size is 18px or more, else 0.
+     --fx-big = 1 when 24px or more (uses the stronger wave filter; 18-23px uses the gentle one).
+   The gate reads the real computed font-size (1em on .fx-fire), so it follows
+   rem, em, %, clamp(), vw and inherited sizes, not just px values you typed.
+   Change the floor in ONE place: --fx-floor below.
+
+   FALLBACK: everything is plain gold by default. The fire is only switched ON
+   inside @container style(--fx-on: 1). A browser that cannot do style queries
+   or typed arithmetic therefore shows plain gold (safe failure, never broken fire).
+   Below the floor: plain gold, no flicker, no wave, no sparks, no glow.
+   Reduced motion: at/above the floor keeps static glow + gradient; no movement,
+   no embers, no filter.
+
+   Brand: gold #E8AB35, ember #FF5A4F, pale #FFD27A, cream #FBF8F3 (BRAND-KIT colors
+   as used in the earlier approved previews). Fonts Oswald / IBM Plex Sans.
+   ===================================================================== */
+
+@property --fx-size  { syntax: "<length>"; inherits: false; initial-value: 0px; }
+/* --fx-on / --fx-big must inherit: the glow, gradient and sparks sit on inner layers that read the gate from .fx-in */
+@property --fx-on    { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --fx-big   { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+:root{
+  --gold:#E8AB35; --ember:#FF5A4F; --pale:#FFD27A;
+  --fx-floor:18px;      /* minimum size for the fire. Raise later here only. */
+  --fx-big-from:24px;   /* from here the stronger wave filter is used */
+}
+
+.fx-fire{
+  display:inline-block;
+  --fx-size:1em;
+  /* (size - floor) / 1px is a plain number; x1000 then clamp to 0..1.
+     Subtract 0.01px so exactly 18px counts as ON. */
+  --fx-on:  clamp(0, calc((var(--fx-size) - var(--fx-floor) + 0.01px) / 1px * 1000), 1);
+  --fx-big: clamp(0, calc((var(--fx-size) - var(--fx-big-from) + 0.01px) / 1px * 1000), 1);
+}
+
+/* ---------- DEFAULT = plain gold (also the under-18px look) ---------- */
+.fx-fire .fx-in{display:inline-block;position:relative;isolation:isolate}
+.fx-fire .t{color:var(--gold);-webkit-text-fill-color:currentColor;background:none;animation:none}
+.fx-fire .fx-in::before,
+.fx-fire .fx-in::after{content:none;animation:none}
+
+/* ---------- 18px and up = full blend B ---------- */
+@container style(--fx-on: 1){
+  .fx-fire .fx-in{filter:url(#fBs)}
+  .fx-fire .fx-in::before{
+    content:attr(data-t);content:attr(data-t) / "";
+    position:absolute;left:0;top:0;z-index:0;color:transparent;pointer-events:none;white-space:nowrap;
+    text-shadow:0 0 .08em rgba(255,90,79,.7),0 0 .3em rgba(232,171,53,.42);
+    animation:fx-pulse 2.6s ease-in-out infinite}
+  .fx-fire .fx-in .t{
+    position:relative;z-index:1;color:transparent;-webkit-text-fill-color:transparent;
+    background:linear-gradient(100deg,#E8AB35 0%,#FF5A4F 30%,#E8AB35 50%,#FFD27A 70%,#E8AB35 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    animation:fx-flow 3.6s linear infinite}
+  .fx-fire .fx-in::after{
+    content:"";position:absolute;z-index:2;left:6%;right:6%;top:-.3em;height:.5em;pointer-events:none;opacity:.9;
+    background-image:
+     radial-gradient(circle at 14% 26%,#FF5A4F 0 .065em,transparent .1235em),
+     radial-gradient(circle at 41% 72%,#E8AB35 0 .065em,transparent .1235em),
+     radial-gradient(circle at 68% 40%,#FF5A4F 0 .065em,transparent .1235em),
+     radial-gradient(circle at 87% 85%,#E8AB35 0 .065em,transparent .1235em);
+    background-size:100% 1.1em;background-repeat:repeat-y;
+    -webkit-mask-image:linear-gradient(to top,#000 0,#000 45%,transparent 100%);
+    mask-image:linear-gradient(to top,#000 0,#000 45%,transparent 100%);
+    animation:fx-rise 3.2s linear infinite}
+}
+
+/* 24px and up: stronger wave filter, finer embers */
+@container style(--fx-big: 1){
+  .fx-fire .fx-in{filter:url(#fB)}
+  .fx-fire .fx-in::before{text-shadow:0 0 .12em rgba(255,90,79,.7),0 0 .38em rgba(232,171,53,.42)}
+  .fx-fire .fx-in::after{
+    background-image:
+     radial-gradient(circle at 14% 26%,#FF5A4F 0 .035em,transparent .0665em),
+     radial-gradient(circle at 41% 72%,#E8AB35 0 .035em,transparent .0665em),
+     radial-gradient(circle at 68% 40%,#FF5A4F 0 .035em,transparent .0665em),
+     radial-gradient(circle at 87% 85%,#E8AB35 0 .035em,transparent .0665em)}
+}
+
+@keyframes fx-pulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes fx-flow{from{background-position:0 0}to{background-position:-220% 0}}
+@keyframes fx-rise{from{background-position:0 0,0 0,0 0,0 0}to{background-position:0 -1.1em,0 -1.1em,0 -1.1em,0 -1.1em}}
+
+/* Reduced motion: still glow + gradient (only above the floor); nothing moves, no embers, no filter */
+@media (prefers-reduced-motion:reduce){
+  .fx-fire .fx-in{filter:none !important}
+  .fx-fire .fx-in::before,
+  .fx-fire .fx-in .t,
+  .fx-fire .fx-in::after{animation:none !important}
+  .fx-fire .fx-in::before{opacity:1}
+  .fx-fire .fx-in::after{display:none}
+}

@@ -315,3 +315,6 @@ a.social-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   .anywhere-qr{display:flex}
   .anywhere-btn{display:none}   /* on a computer the QR does the job; on phones the button does */
 }
+
+/* ---------- fire text: the loading word is set at exactly the 18px floor so it gets the gentle fire ---------- */
+.news-wait .fx-fire{font-size:1.125rem}

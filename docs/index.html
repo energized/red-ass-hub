@@ -18,8 +18,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fire-effect.css">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- full wave filter, used from 24px -->
+    <filter id="fB" x="-6%" y="-40%" width="112%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016 0.07" numOctaves="2" seed="5" result="n">
+        <animate attributeName="baseFrequency" dur="3.4s" values="0.016 0.07;0.021 0.1;0.016 0.07" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- gentle wave filter, used 18-23px -->
+    <filter id="fBs" x="-6%" y="-40%" width="112%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025 0.1" numOctaves="1" seed="5" result="n">
+        <animate attributeName="baseFrequency" dur="3.4s" values="0.025 0.1;0.03 0.13;0.025 0.1" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap bar">
@@ -41,7 +60,7 @@
   <div class="wrap">
     <div class="hero-copy">
       <!-- COPY: home.md #hero -->
-      <h1 id="hero-title"><span class="wordmark">Red <b>Ass</b></span><span class="tagline"><span>Draw.</span> <span class="burn">Burn.</span> <span>Repeat.</span></span></h1>
+      <h1 id="hero-title"><span class="wordmark">Red <b>Ass</b></span><span class="tagline"><span>Draw.</span> <span class="burn"><span class="fx-fire"><span class="fx-in" data-t="Burn."><span class="t">Burn.</span></span></span></span> <span>Repeat.</span></span></h1>
       <p class="lede">The card game where your friends are the enemy. Match cards, dump your hand, and stick everyone else with the points.</p>
       <div class="hero-actions"><a class="btn btn-play btn-big" href="https://play.redass.net" data-play target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 2.5v11l9.5-5.5z"/></svg><span>Play Now</span></a></div>
       <p class="hero-note">Plays in your browser. Adults 18+ only.</p>
@@ -96,11 +115,11 @@
       <a href="news.html">See all news</a>
     </div>
     <p class="section-sub">Fresh from the dealer. The latest changes to the game.</p>
-    <p class="news-wait" data-news-loading>Shuffling the latest news&hellip;</p>
+    <p class="news-wait" data-news-loading><span class="fx-fire"><span class="fx-in" data-t="Shuffling"><span class="t">Shuffling</span></span></span> the latest news&hellip;</p>
     <ol class="news-list" data-news data-limit="3" hidden></ol>
     <div class="fallback" data-news-fallback hidden>
       <!-- COPY: home.md #whats-new fallback -->
-      <h3>The news is shuffling</h3>
+      <h3>The news is <span class="fx-fire"><span class="fx-in" data-t="shuffling"><span class="t">shuffling</span></span></span></h3>
       <p>Check back soon, or just go play.</p>
     </div>
   </div>
