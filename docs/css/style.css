@@ -93,7 +93,8 @@ p{margin:0 0 1em;max-width:62ch}
   .nav.open ul{flex-direction:row}
   .nav.open a{min-height:44px;font-size:1rem;border:0;border-radius:8px}
   .brand{margin-right:12px}
-  .nav{margin-right:auto}
+  .nav,.nav.open{flex:1 1 auto;min-width:0}
+  .nav ul,.nav.open ul{justify-content:space-evenly}
 }
 @media (max-width:374px){
   .brand .wordmark{font-size:1.15rem}
