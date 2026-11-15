@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Red Ass - phone table, portrait templates (TEST)</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* TEST PAGE ONLY. Not the real game. Fake sample data, no real players.
+   Angled view: the table is a real CSS 3D plane (rotateX) so it narrows toward the top.
+   Opponents are chest-up cutouts that sit partly BEHIND the far/side edge of the table.
+   Decisions kept: home-table wood look (no green baize), no chips, no NEXT word, cosmetics only.
+   Brand palette (project/BRAND-KIT.md): blue #17202B, cream #FBF8F3, ink #1A1F2B, red #C4211B, gold #E8AB35, ember #FF5A4F.
+   AVATARS: ComfyUI portrait templates 1-6 (avatars/tplN.webp, tplNf.webp = mirrored). All normalised to one head size.
+   Per-seat file map is SEAT_ART in the script. Pass ?avatars=some/folder/ to swap the folder. */
+:root{
+  --blue:#17202b; --cream:#fbf8f3; --ink:#1a1f2b; --red:#c4211b; --red-hover:#a01a15;
+  --ember:#ff5a4f; --gold:#e8ab35; --text:#e9edf3;
+  --font-display:'Oswald','Arial Narrow',Arial,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --aw:120px; --ah:83px;         /* avatar box (ratio 286:198; the head is about 38% of the box width) */
+  --cw:64px; --ch:90px;          /* hand card size (5:7) */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;max-width:100%;overflow:hidden}
+body{
+  font-family:var(--font-body); color:var(--text); height:100dvh;
+  background:#0c1118 url(soc-room-backdrop.webp) center/cover no-repeat;
+  display:flex; flex-direction:column;
+  padding:env(safe-area-inset-top) 0 0;
+  -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none;
+}
+.stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; container-type:size}
+
+/* ---------- TABLE: a wood plane tipped back in perspective ---------- */
+.tbl{position:absolute; inset:0; z-index:2; pointer-events:none; perspective:118cqh; perspective-origin:50% 62%}
+.plane{
+  position:absolute; left:11%; right:11%; bottom:14cqh; height:96cqh;
+  transform-origin:50% 100%; transform:rotateX(32deg);
+  border-radius:34% / 22%;
+}
+.plane.top{
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.07) 0 2px, rgba(0,0,0,0) 2px 11px, rgba(255,235,200,.05) 11px 13px, rgba(0,0,0,0) 13px 23px),
+    radial-gradient(60% 40% at 50% 38%, rgba(255,226,170,.30), rgba(255,226,170,0) 70%),
+    linear-gradient(180deg,#a2713f 0%,#85562f 50%,#946236 100%);
+  box-shadow:
+    inset 0 0 0 5cqw #6a4426,                 /* the wide rim of the tabletop */
+    inset 0 0 0 calc(5cqw + 2px) rgba(0,0,0,.45),
+    inset 0 0 0 calc(5cqw + 4px) rgba(255,220,160,.18),
+    inset 0 0 38px rgba(0,0,0,.35);
+}
+.plane.base{transform:translateY(2.2cqh) rotateX(32deg); background:#35200f; box-shadow:0 0 0 2px #24150a}
+.plane.floor{transform:translateY(5cqh) rotateX(32deg); background:#000; opacity:.55; filter:blur(10px)}
+
+/* ---------- PILES (flat, over the middle of the table) ---------- */
+.piles{position:absolute; left:50%; top:47cqh; transform:translateX(-50%); z-index:3; display:flex; gap:26px; align-items:flex-start}
+.pile{display:flex; flex-direction:column; align-items:center; gap:12px}
+.stack{position:relative; width:56px; height:78px}
+.card{position:absolute; width:56px; height:78px; border-radius:7px;
+  box-shadow:0 1px 1px rgba(0,0,0,.55),0 3px 5px rgba(0,0,0,.45),0 8px 12px -3px rgba(0,0,0,.55)}
+.card.back{background:url(soc-card-back.webp) center/100% 100% no-repeat}
+.face{background:linear-gradient(150deg,#fff 0%,var(--cream) 48%,#ece3d3 100%); border:1px solid rgba(26,31,43,.45); color:var(--ink)}
+.face::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 35%,rgba(0,0,0,.08) 100%)}
+.rk{position:absolute; left:6px; top:3px; font:600 21px/1 var(--font-display); color:var(--red)}
+.face.ink .rk{color:var(--ink)}
+.mf{position:absolute; left:7px; top:27px; width:12px; height:12px}
+.fl{position:absolute; left:50%; top:60%; width:46%; height:auto; transform:translate(-50%,-50%); filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.lbl{font:700 14px/1 var(--font-body); color:var(--text); white-space:nowrap; padding:5px 11px; border-radius:12px;
+  background:rgba(12,17,24,.78); border:1px solid rgba(232,171,53,.55); box-shadow:0 2px 4px rgba(0,0,0,.5)}
+
+/* ---------- SEATS: avatar BEHIND the table (z1), plate/count/cards IN FRONT (z3) ----------
+   .seat is a zero-size anchor at the point where the avatar meets its nameplate. It makes no stacking
+   context, so its children layer against the table. */
+.seat{position:absolute; width:0; height:0}
+.av{position:absolute; z-index:1; width:var(--aw); height:var(--ah); left:calc(var(--aw) / -2); top:calc(var(--ah) * -1 + 14px)}
+.av img{display:block; width:100%; height:100%; filter:drop-shadow(0 5px 4px rgba(0,0,0,.55))}
+/* side seats stand IN FRONT of the table rim so the rim never cuts their table-side edge; far seat stays behind the far edge */
+.seat.side .av{z-index:3}
+.pl{position:absolute; z-index:3; left:-40px; width:80px; top:6px; height:30px; padding:0 8px; display:grid; place-items:center;
+  font:700 14px/1 var(--font-body); color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  background:linear-gradient(#2a3446,#161d2a); border:1px solid rgba(232,171,53,.7); border-radius:10px;
+  box-shadow:0 3px 5px rgba(0,0,0,.6)}
+.cnt{position:absolute; z-index:4; left:24px; top:-9px; min-width:26px; height:26px; padding:0 6px;
+  display:grid; place-items:center; border-radius:13px; background:var(--cream); color:var(--ink); border:2px solid var(--ink);
+  font:700 15px/1 var(--font-body); box-shadow:0 2px 4px rgba(0,0,0,.6)}
+.fan{position:absolute; z-index:3; left:0; top:40px; width:0; height:0}
+.fan i{position:absolute; width:22px; height:31px; left:-11px; top:0; border-radius:4px; background:url(soc-card-back.webp) center/100% 100% no-repeat; box-shadow:0 2px 3px rgba(0,0,0,.6)}
+.fan i:nth-child(1){transform:translate(-16px,1px) rotate(-14deg)}
+.fan i:nth-child(2){transform:translate(0,-1px)}
+.fan i:nth-child(3){transform:translate(16px,1px) rotate(14deg)}
+/* whose turn: a gold pointer over the head and a gold plate (shape + colour, no word, no ring) */
+.mark{display:none; position:absolute; z-index:3; left:-10px; top:calc(var(--ah) * -1 - 10px); width:0; height:0;
+  border-left:10px solid transparent; border-right:10px solid transparent; border-top:14px solid var(--gold);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.7)); animation:bob 1.6s ease-in-out infinite}
+.seat.turn .mark{display:block}
+.seat.turn .pl{background:linear-gradient(#f3c15a,#d29a24); color:var(--ink); border-color:#fff3d2}
+@keyframes bob{50%{transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.mark{animation:none}}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* slots: centres of the avatar/plate meeting point. Far seats stand behind the far edge, near seats beside the near sides. */
+.slot-T {left:50%; top:21cqh}
+/* side margin: nameplate (80px wide, centred on the slot) keeps at least 12px from the screen edge */
+.slot-FL{left:calc(var(--aw) / 2 + 4px);                top:39cqh}
+.slot-FR{left:calc(100% - var(--aw) / 2 - 4px);         top:39cqh}
+.slot-NL{left:calc(var(--aw) / 2 + 4px);                top:66cqh}
+.slot-NR{left:calc(100% - var(--aw) / 2 - 4px);         top:66cqh}
+/* your own avatar: bottom centre, standing above your "You" plate, over the table's near edge */
+.hand .av.me{position:absolute; z-index:0; left:50%; margin-left:calc(var(--aw) / -2); top:auto; bottom:calc(var(--ch) + 6px + 12px)}
+
+/* ---------- HAND: your cards fan at the bottom, over the near edge ---------- */
+.hand{position:absolute; left:0; right:0; bottom:6px; height:calc(var(--ch) + 34px); z-index:5; pointer-events:none}
+.hand .you{position:absolute; left:50%; bottom:calc(var(--ch) + 6px); transform:translateX(-50%); font:700 14px/1 var(--font-body); color:var(--text);
+  padding:5px 14px; border-radius:12px; background:rgba(12,17,24,.78); border:1px solid rgba(232,171,53,.55); box-shadow:0 2px 4px rgba(0,0,0,.5); white-space:nowrap}
+.hand button.card{all:unset; box-sizing:border-box; position:absolute; bottom:0; left:50%; pointer-events:auto; width:var(--cw); height:var(--ch); border-radius:8px; cursor:pointer;
+  transform-origin:50% 150%; transform:translateX(calc(-50% + var(--x))) translateY(var(--y)) rotate(var(--r));
+  transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s;
+  box-shadow:-2px 2px 3px rgba(0,0,0,.5),-5px 9px 12px rgba(0,0,0,.5);
+  background:linear-gradient(150deg,#fff 0%,var(--cream) 48%,#ece3d3 100%); border:1px solid rgba(26,31,43,.45); color:var(--ink)}
+.hand button.card::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 35%,rgba(0,0,0,.1) 100%)}
+.hand button.card .rk{font-size:24px}
+.hand button.card .mf{top:29px}
+.hand button.card.up{z-index:50!important; transform:translateX(calc(-50% + var(--x))) translateY(calc(var(--y) - 30px)) rotate(0deg) scale(1.14);
+  box-shadow:-6px 14px 10px rgba(0,0,0,.4),0 0 0 2px rgba(232,171,53,.9)}
+.hand button.card:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
+
+/* ---------- ACTION BAR at the very bottom ---------- */
+.bar{flex:0 0 auto; position:relative; z-index:6; display:flex; justify-content:center; gap:10px; padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(#141b27,#0c1118); border-top:1px solid rgba(232,171,53,.45); box-shadow:0 -6px 14px rgba(0,0,0,.45)}
+.draw{appearance:none; border:0; cursor:pointer; width:min(100%,360px); min-height:52px; border-radius:26px;
+  font:600 26px/1 var(--font-display); letter-spacing:.14em; text-transform:uppercase; color:var(--cream);
+  background:linear-gradient(#e8443a 0%,var(--red) 50%,#9a1812 100%);
+  box-shadow:0 0 0 2px #5c0d0a,0 0 0 4px rgba(232,171,53,.75),inset 0 2px 2px rgba(255,255,255,.45),inset 0 -4px 6px rgba(0,0,0,.35);
+  text-shadow:0 2px 2px rgba(0,0,0,.5)}
+.draw:active{transform:translateY(2px); background:linear-gradient(#c4211b,var(--red-hover))}
+.draw:focus-visible{outline:3px solid var(--text); outline-offset:4px}
+
+@media (max-height:720px){
+  :root{--aw:104px; --ah:72px; --cw:58px; --ch:81px}
+}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="tbl" aria-hidden="true"><div class="plane floor"></div><div class="plane base"></div><div class="plane top"></div></div>
+  <div class="piles" id="piles"></div>
+  <div id="seats"></div>
+  <div class="hand" id="hand"></div>
+</div>
+<div class="bar"><button class="draw" id="draw" type="button">Draw</button></div>
+
+<script>
+/* ===== Fake sample data only. No real player data. =====
+   ?players=2..6 (including you)   ?turn=0..4 (which opponent has the turn)
+   ?avatars=folder/  swaps the whole avatar folder (same file names as SEAT_ART below). */
+var params = new URLSearchParams(location.search);
+var PLAYERS = Math.max(2, Math.min(6, parseInt(params.get('players') || '6', 10) || 6));
+var TURN = parseInt(params.get('turn') || '1', 10) || 0;
+
+/* ---- AVATAR SWAP POINT ----
+   One path per opponent. Drop ComfyUI's chest-up art into avatars/ under these names, or change a path here.
+   Any image with a transparent background works (png, webp, svg). Suggested art size: 336x376 (about 4:4.5). */
+var AVATAR_BASE = params.get('avatars') || 'avatars/';
+/* One template per seat. "f" files are mirrored copies, used where the pose would face away from the table:
+   left seats lean/gesture toward the centre, right seats the other way. Same file for a seat at any player count. */
+var SEAT_ART = {
+  Y:'tpl1.webp',   /* you, bottom: waving (template 1) */
+  NL:'tpl5.webp',  /* shrug, head tilts right, toward the table */
+  FL:'tpl4f.webp', /* cards, mirrored so the fan points toward the table */
+  T:'tpl6.webp',   /* shh, faces front */
+  FR:'tpl3.webp',  /* chin rest, leans left, toward the table */
+  NR:'tpl2.webp'   /* thumbs up, thumb toward the table */
+};
+
+var OPPONENTS = [
+  {name:'Mia',  n:7}, {name:'Dex', n:5}, {name:'Juno', n:9}, {name:'Rae', n:4}, {name:'Otis', n:6}
+];
+/* seat slots by number of other players: T top, FL/FR far left/right, NL/NR near left/right */
+var SLOTS = {1:['T'], 2:['FL','FR'], 3:['FL','T','FR'], 4:['NL','FL','FR','NR'], 5:['NL','FL','T','FR','NR']};
+var HAND = ['K','7','A','4','Q','9'];
+
+function flame(cls){return '<svg class="'+cls+'" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c1.5 4.6 7.2 6.6 7.2 13a7.2 7.2 0 0 1-14.4 0c0-3.6 2.4-5 3.2-8.2 1.4 1.2 2 .6 2.5-1.2.5-1.2.9-2.4 1.5-3.6z" fill="#c4211b"/><path d="M12 11c.9 2.6 3.6 3.6 3.6 6.6a3.6 3.6 0 0 1-7.2 0c0-1.8 1.2-2.6 1.6-4.2.7.7 1.4.3 1.6-.8z" fill="#e8ab35"/></svg>';}
+
+function seat(o, i, slot, turn){
+  var side = (slot==='FL'||slot==='FR'||slot==='NL'||slot==='NR');
+  return '<div class="seat slot-'+slot+(side?' side':'')+(turn?' turn':'')+'" data-seat="'+o.name+'"'+(turn?' aria-current="true"':'')+'>'
+   +'<div class="av"><img src="'+AVATAR_BASE+SEAT_ART[slot]+'" alt="" draggable="false"></div>'
+   +'<span class="mark" aria-hidden="true"></span>'
+   +'<span class="cnt" aria-label="'+o.n+' cards">'+o.n+'</span>'
+   +'<div class="pl">'+o.name+(turn?'<span class="vh"> is taking a turn</span>':'')+'</div>'
+   +'<div class="fan" aria-hidden="true"><i></i><i></i><i></i></div></div>';
+}
+(function build(){
+  var others = PLAYERS-1, slots = SLOTS[others], html='';
+  for (var i=0;i<others;i++){ html += seat(OPPONENTS[i], i, slots[i], i===(TURN % others)); }
+  document.getElementById('seats').innerHTML = html;
+
+  document.getElementById('piles').innerHTML =
+    '<div class="pile"><div class="stack" role="img" aria-label="Draw pile, 38 cards">'
+     +'<div class="card back" style="left:0;top:0"></div><div class="card back" style="left:-1px;top:-2px"></div><div class="card back" style="left:1px;top:-4px;transform:rotate(-2deg)"></div></div><div class="lbl">Draw 38</div></div>'
+    +'<div class="pile"><div class="stack" role="img" aria-label="Played pile, top card queen">'
+     +'<div class="card face" style="left:-4px;top:1px;transform:rotate(-8deg)"><span class="rk">9</span></div>'
+     +'<div class="card face ink" style="left:4px;top:-1px;transform:rotate(6deg)"><span class="rk">4</span></div>'
+     +'<div class="card face" style="left:0;top:-3px;transform:rotate(-1deg)"><span class="rk">Q</span>'+flame('mf')+flame('fl')+'</div></div><div class="lbl">Played</div></div>';
+
+  var h = document.getElementById('hand'), n = HAND.length,
+      out='<div class="av me"><img src="'+AVATAR_BASE+SEAT_ART.Y+'" alt="" draggable="false"></div><div class="you">You</div>', mid=(n-1)/2;
+  var step = Math.min(46, (window.innerWidth - 110) / (n-1));
+  for (var j=0;j<n;j++){
+    var d=j-mid;
+    out += '<button type="button" class="card" aria-label="Card '+HAND[j]+'" aria-pressed="false"'
+         + ' style="--x:'+(d*step).toFixed(1)+'px;--y:'+(d*d*1.8).toFixed(1)+'px;--r:'+(d*5.5).toFixed(1)+'deg;z-index:'+(j+1)+'">'
+         + '<span class="rk" style="color:'+(j%2?'#1a1f2b':'#c4211b')+'">'+HAND[j]+'</span>'+flame('mf')+flame('fl')+'</button>';
+  }
+  h.innerHTML = out;
+  h.addEventListener('click', function(e){
+    var b = e.target.closest('button.card'); if(!b) return;
+    var was = b.classList.contains('up');
+    [].forEach.call(h.querySelectorAll('button.card.up'), function(x){x.classList.remove('up'); x.setAttribute('aria-pressed','false');});
+    if(!was){ b.classList.add('up'); b.setAttribute('aria-pressed','true'); }
+  });
+})();
+</script>
+</body>
+</html>
